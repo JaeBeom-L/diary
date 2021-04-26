@@ -19,13 +19,13 @@ public class DiaryController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		this.diaryService = new DiaryService();
 		HttpSession session = request.getSession();
-		int memberNo = ((Member)(session.getAttribute("sessionMember"))).getMemberNo();
+		int memberNo = ((Member)(session.getAttribute("sessionMember"))).getMemberNo(); // 세션에서 멤버테이블의 기본키인 멤버번호를 받아와 저장
 		
-		String targetYear = request.getParameter("targetYear"); // "2021"
-		String targetMonth = request.getParameter("targetMonth"); // 4월이면 3... 3월이면 2...
+		String targetYear = request.getParameter("targetYear"); 
+		String targetMonth = request.getParameter("targetMonth"); 
 		
 		
-		Map<String, Object> diaryMap = this.diaryService.getDiary(memberNo, targetYear, targetMonth);
+		Map<String, Object> diaryMap = this.diaryService.getDiary(memberNo, targetYear, targetMonth); // 각 멤버에 맞는 목표 년도 목표 월의 정보를 map에 담는다.
 		
 		request.setAttribute("diaryMap", diaryMap);
 		request.getRequestDispatcher("/WEB-INF/view/auth/diary.jsp").forward(request, response);

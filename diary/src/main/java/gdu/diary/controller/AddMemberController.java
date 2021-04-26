@@ -31,7 +31,7 @@ public class AddMemberController extends HttpServlet {
 		
 		System.out.println(member);
 		
-		boolean check = this.memberService.checkMemberIdAndAddMember(member);
+		boolean check = this.memberService.checkMemberIdAndAddMember(member); // 아이디 중복 체크 그리고 회원가입 
 		if(check == false) { // 회원가입 실패시 돌아가기
 			response.sendRedirect(request.getContextPath()+"/addMember");
 			return;

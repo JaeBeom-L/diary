@@ -16,7 +16,9 @@ public class ModifyTodoController extends HttpServlet {
 	private TodoService todoService;
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int todoNo = Integer.parseInt(request.getParameter("todoNo"));
+		String todoDate = request.getParameter("todoDate");
 		request.setAttribute("todoNo", todoNo);
+		request.setAttribute("todoDate", todoDate);
 		request.getRequestDispatcher("/WEB-INF/view/auth/updateTodo.jsp").forward(request, response);
 	}
 
@@ -24,6 +26,7 @@ public class ModifyTodoController extends HttpServlet {
 		String todoTitle = request.getParameter("todoTitle");
 		String todoContent = request.getParameter("todoContent");
 		String todoFontColor = request.getParameter("todoFontColor");
+		String todoDate = request.getParameter("todoDate");
 		int todoNo = Integer.parseInt(request.getParameter("todoNo"));
 		System.out.println(todoNo + " todoNo");
 		
@@ -36,7 +39,7 @@ public class ModifyTodoController extends HttpServlet {
 		
 		this.todoService.modifyTodo(todo);
 
-		response.sendRedirect(request.getContextPath()+"/auth/todoOne?todoNo="+todoNo);
+		response.sendRedirect(request.getContextPath()+"/auth/todoOne?todoNo="+todoNo+"&todoDate="+todoDate);
 	}
 
 }

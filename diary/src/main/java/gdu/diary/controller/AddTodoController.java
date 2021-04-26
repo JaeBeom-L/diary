@@ -64,6 +64,6 @@ public class AddTodoController extends HttpServlet {
 		
 		String[] arr = todoDate.split("-"); // arr[0] 2021, arr[1] "04", arr[2] "26"
 		
-		response.sendRedirect(request.getContextPath()+"/auth/diary?targetYear="+arr[0]+"&targetMonth="+(Integer.parseInt(arr[1])-1));
+		response.sendRedirect(request.getContextPath()+"/auth/diary?targetYear="+arr[0]+"&targetMonth="+(Integer.parseInt(arr[1])-1)); // 작업이 완료 된 후 해당 년 월에 다이어리 출력
 	}
 }

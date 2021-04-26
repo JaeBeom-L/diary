@@ -30,6 +30,7 @@ public class TodoOneController extends HttpServlet {
 		List<Todo> todoOneList = this.todoService.todoOneList(memberNo, todoNo, todoDate);
 		
 		request.setAttribute("todoOneList", todoOneList);
+		request.setAttribute("todoDate", todoDate);
 		request.getRequestDispatcher("/WEB-INF/view/auth/todoOne.jsp").forward(request, response);
 	}
 }

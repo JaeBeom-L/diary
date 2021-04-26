@@ -15,6 +15,6 @@ public class TodoQuery {
 		SELECT_TODO_LIST_BY_DATE = "SELECT todo_no todoNo, Day(todo_date) todoDate, LEFT(todo_title, 10) todoTitle, todo_font_color todoFontColor FROM todo WHERE member_no=? AND YEAR(todo_date)=? AND MONTH(todo_date)=?";
 		SELECT_TODO_ONE = "SELECT todo_no todoNo, todo_date todoDate, todo_title todoTitle, todo_content todoContent, todo_add_date todoAddDate FROM todo WHERE member_no=? AND todo_no=? AND todo_date=? ";
 		UPDATE_TODO_BY_TODONO = "UPDATE todo SET todo_title=?, todo_content=?, todo_font_color=? WHERE todo_no=?";
-		DELETE_TODO_BY_TODONO = "DELET FROM todo WHERE todo_no=?";
+		DELETE_TODO_BY_TODONO = "DELETE FROM todo WHERE todo_no=?";
 	}
 }

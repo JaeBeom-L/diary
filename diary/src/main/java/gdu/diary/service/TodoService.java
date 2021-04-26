@@ -15,7 +15,7 @@ public class TodoService {
 	private TodoDao todoDao;
 	
 	//일정 삭제
-	public void dropTodo(int todoNo) {
+	public void removeTodo(int todoNo) {
 		// 초기화
 		this.dbUtil = new DBUtil();
 		this.todoDao = new TodoDao();

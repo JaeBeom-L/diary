@@ -5,12 +5,41 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import gdu.diary.vo.Todo;
 
 // 2. Dao -> Service
 public class TodoDao {
+	
+	// DDAY 정보 가져오기 메서드
+	public List<Map<String, Object>> selectTodoDdayList(Connection conn, int memberNo) throws SQLException{
+		List<Map<String, Object>> list = new ArrayList<>();
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		try {
+			stmt = conn.prepareStatement(TodoQuery.SELECT_TODO_DDAY_LIST);
+			stmt.setInt(1, memberNo);
+			System.out.println(stmt+" DDAY출력 메서드");
+			rs = stmt.executeQuery();
+			while(rs.next()) {
+				Map<String, Object> map = new HashMap<>();
+				map.put("todoNo", rs.getInt("todoNo"));
+				map.put("todoDate", rs.getString("todoDate"));
+				map.put("todoTitle", rs.getString("todoTitle"));
+				map.put("dday", rs.getInt("dday"));
+				list.add(map);
+			}
+		}finally {
+			if(rs != null) {
+				rs.close();
+			}
+			stmt.close();
+		}
+		return list;
+	}
 	// 일정 삭제 메서드
 	public void deleteTodo(Connection conn,int todoNo) throws SQLException{
 		// 초기화

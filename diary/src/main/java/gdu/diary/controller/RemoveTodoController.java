@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import gdu.diary.service.TodoService;
 
-@WebServlet("/auth/deleteTodo")
+@WebServlet("/auth/removeTodo")
 public class RemoveTodoController extends HttpServlet {
 	private TodoService todoSerivce;
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

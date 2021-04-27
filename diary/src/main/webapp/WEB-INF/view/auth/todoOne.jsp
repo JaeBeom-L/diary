@@ -21,6 +21,10 @@
 	<c:forEach var="todoOne" items="${todoOneList}">
 		<table border="1">
 			<tr>
+				<td>todoDate</td>
+				<td>${todoOne.todoDate}</td>
+			</tr>
+			<tr>
 				<td>todoTitle</td>
 				<td>${todoOne.todoTitle}</td>
 			</tr>
@@ -38,7 +42,7 @@
 			</tr>
 			<tr>
 				<td>삭제</td>
-				<td><a href="${pageContext.request.contextPath}/auth/deleteTodo?todoNo=${todoOne.todoNo}&todoDate=${todoDate}">삭제</a></td>
+				<td><a href="${pageContext.request.contextPath}/auth/removeTodo?todoNo=${todoOne.todoNo}&todoDate=${todoDate}">삭제</a></td>
 			</tr>
 		</table>
 	</c:forEach>	

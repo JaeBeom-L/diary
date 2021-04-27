@@ -17,6 +17,24 @@
 		</div>
 		<div><a href="${pageContext.request.contextPath}/auth/diary">다이어리</a></div>
 	</c:if>	
+	<h1>DDAY List</h1>
+	<div>
+		<table border="1">
+			<tr>
+				<td>todoDate</td>
+				<td>todoTitle</td>
+				<td>dday</td>
+			<tr>
+			<c:forEach var="m" items="${diaryMap.ddayList}">
+				<tr>
+					<td>${m.todoDate}</td>
+					<td><a href="${pageContext.request.contextPath}/auth/todoOne?todoNo=${m.todoNo}&todoDate=${m.todoDate}">${m.todoTitle}</a></td>
+					<td>${m.dday}</td>
+				</tr>
+			</c:forEach>
+		</table>
+	</div>
+	
 	<!-- 전체 셀 -->
 	<c:set var="totalCell" value="${diaryMap.startBlank + diaryMap.endDay + diaryMap.endBlank}"></c:set>
 	<!-- 달력넘기기 -->

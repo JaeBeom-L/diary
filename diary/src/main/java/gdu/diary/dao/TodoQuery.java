@@ -7,7 +7,7 @@ public class TodoQuery {
 	public final static String SELECT_TODO_ONE; // 일정 상세보기
 	public final static String UPDATE_TODO_BY_TODONO; //일정 수정
 	public final static String DELETE_TODO_BY_TODONO; // 일정 삭제
-	
+	public final static String SELECT_TODO_DDAY_LIST;
 	
 	static {
 		DELETE_TODO_BY_MEMBER = "DELETE FROM todo WHERE member_no=?";
@@ -16,5 +16,6 @@ public class TodoQuery {
 		SELECT_TODO_ONE = "SELECT todo_no todoNo, todo_date todoDate, todo_title todoTitle, todo_content todoContent, todo_add_date todoAddDate FROM todo WHERE member_no=? AND todo_no=? AND todo_date=? ";
 		UPDATE_TODO_BY_TODONO = "UPDATE todo SET todo_title=?, todo_content=?, todo_font_color=? WHERE todo_no=?";
 		DELETE_TODO_BY_TODONO = "DELETE FROM todo WHERE todo_no=?";
+		SELECT_TODO_DDAY_LIST = "SELECT member_no memberNo, todo_no todoNo, todo_date todoDate, todo_title todoTitle ,DATEDIFF(todo_date, DATE(NOW())) dday FROM todo WHERE todo_date > DATE(NOW()) AND member_no=? LIMIT 10";
 	}
 }

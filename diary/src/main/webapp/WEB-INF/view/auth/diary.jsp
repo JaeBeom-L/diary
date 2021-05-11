@@ -5,8 +5,13 @@
 <head>
 <meta charset="UTF-8">
 <title>diary</title>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
-<body>
+<body class="container">
 	<!-- 로그인 상태 -->
 	<c:if test="${sessionMember != null}">
 		${sessionMember.memberId}님 반갑습니다.
@@ -20,7 +25,7 @@
 	</c:if>	
 	<h1>DDAY List</h1>
 	<div>
-		<table border="1">
+		<table border="1" class="table table-bordered">
 			<tr>
 				<td>todoDate</td>
 				<td>todoTitle</td>
@@ -45,12 +50,12 @@
 		<a href="${pageContext.request.contextPath}/auth/diary?targetYear=${diaryMap.targetYear}&targetMonth=${diaryMap.targetMonth+1}">다음달</a>
 	</h1>
 	<!-- 달력출력 -->
-	<table border="1" width="90%">
+	<table border="1" class="table table-bordered">
 		<tr>
 			<c:forEach var="i" begin="1" end="${totalCell}" step="1">
 				<!-- 날짜값만 출력하게 변경 (음수면 빈칸,마지막날넘어가면 빈칸)-->
 				<c:set var="num" value="${i-diaryMap.startBlank}"></c:set>
-				<td>
+				<td  width="150px" height="150px" nowrap>
 					<!-- 날짜출력 / 다이어리 입력 링크 -->
 					<c:if test="${num > 0 && num <= diaryMap.endDay}">
 						<a href="${pageContext.request.contextPath}/auth/addTodo?year=${diaryMap.targetYear}&month=${diaryMap.targetMonth+1}&day=${num}">
@@ -74,5 +79,6 @@
 			</c:forEach>
 		</tr>
 	</table>
+	
 </body>
 </html>
